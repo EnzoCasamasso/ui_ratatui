@@ -43,11 +43,19 @@ impl CreateView {
     }
 
     pub fn ui(&mut self, frame: &mut Frame) {
-        let size = frame.size();
-        frame.render_widget(
-            Paragraph::new("Hello world")
-                .block(Block::default().title("Teste").borders(Borders::ALL)),
-            size,
-        );
+        let label_frame_size = frame.size().to_string();
+        let layout = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints(vec![Constraint::Percentage(50), Constraint::Percentage(50)])
+            .split(frame.size());
+
+        let paragraph = Paragraph::new("File content here")
+            .block(Block::default().title("File_one").borders(Borders::ALL));
+        let paragraph_hex = Paragraph::new(format!("Size: {}", label_frame_size))
+            .block(Block::default().title("File_two").borders(Borders::ALL));
+
+        //Render layout here:
+        frame.render_widget(paragraph, layout[0]);
+        frame.render_widget(paragraph_hex, layout[1]);
     }
 }
