@@ -27,7 +27,7 @@ impl CreateView {
 
             if let Event::Key(key) = event::read()? {
                 match key.code {
-                    KeyCode::Char('q') => break 'mainloop,
+                    KeyCode::Esc => break 'mainloop,
                     _ => {}
                 }
             }
