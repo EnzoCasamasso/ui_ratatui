@@ -49,8 +49,12 @@ impl CreateView {
             .constraints(vec![Constraint::Percentage(50), Constraint::Percentage(50)])
             .split(frame.size());
 
-        let paragraph = Paragraph::new("File content here")
-            .block(Block::default().title("File_one").borders(Borders::ALL));
+        // let span = Span::raw("Span widget");
+        let line = Line::from(vec!["Vim ".red(), "is ".blue(), "good!".yellow()])
+            .alignment(Alignment::Center);
+
+        let paragraph =
+            Paragraph::new(line).block(Block::default().title("File_one").borders(Borders::ALL));
         let paragraph_hex = Paragraph::new(format!("Size: {}", label_frame_size))
             .block(Block::default().title("File_two").borders(Borders::ALL));
 
