@@ -50,11 +50,14 @@ impl CreateView {
             .split(frame.size());
 
         // let span = Span::raw("Span widget");
-        let line = Line::from(vec!["Vim ".red(), "is ".blue(), "good!".yellow()])
-            .alignment(Alignment::Center);
+        let text = Text::from(vec![
+            Line::styled("Input_one", Style::default().fg(Color::Red)),
+            Line::styled("Input_two", Style::default().fg(Color::Blue)),
+            Line::styled("Input_three", Style::default().fg(Color::Yellow)),
+        ]);
 
         let paragraph =
-            Paragraph::new(line).block(Block::default().title("File_one").borders(Borders::ALL));
+            Paragraph::new(text).block(Block::default().title("File_one").borders(Borders::ALL));
         let paragraph_hex = Paragraph::new(format!("Size: {}", label_frame_size))
             .block(Block::default().title("File_two").borders(Borders::ALL));
 
