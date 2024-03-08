@@ -1,4 +1,6 @@
+#[warn(unused_imports)]
 use crate::widgets::InputContent;
+
 use crossterm::{
     event::{self, Event, KeyCode},
     execute,
